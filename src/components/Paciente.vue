@@ -50,13 +50,13 @@
         <div class="grid md:grid-cols-2  gap-5 mt-10 ">
             <button 
                 type="button"
-                class="block w-full py-2 px-10 bg-indigo-600 hover:bg-indigo-700 text-white font-bold uppercase rounded-lg"
+                class=" w-full p-2 text-center duration-300 bg-emerald-600 hover:bg-emerald-700 text-white font-bold uppercase rounded-lg"
                 @click="$emit('actualizar-paciente', paciente.id)"
             >Editar</button>
 
             <button 
                 type="button"
-                class="block w-full py-2 px-10 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
+                class=" w-full p-2 text-center duration-300 bg-red-600 hover:bg-red-700 text-white font-bold uppercase rounded-lg"
                 @click="$emit('eliminar-paciente', paciente.id)"
             >Eliminar</button>
         </div>

@@ -163,7 +163,7 @@ const validar = () => {
 
             <input 
                 type="submit"
-                className="bg-sky-500 w-full rounded-md p-3 text-white uppercase font-bold
+                className="duration-300 bg-sky-500 w-full rounded-md p-3 text-white uppercase font-bold
                             hover:bg-sky-700 cursor-pointer transition-colors" 
             />
 

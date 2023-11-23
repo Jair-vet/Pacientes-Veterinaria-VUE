@@ -15,7 +15,23 @@ const paciente = reactive({
 })
 
 const guardarPaciente = () => {
-  pacientes.value.push(paciente)
+  pacientes.value.push({...paciente})
+
+  // Reiniciar el Objeto
+  // paciente.nombre = ''
+  // paciente.propietario = ''
+  // paciente.email = ''
+  // paciente.alta = ''
+  // paciente.sintomas = ''
+
+  // Otra Forma de limpiar
+  Object.assign(paciente, {
+    nombre: '',
+    propietario: '',
+    email: '',
+    alta: '',
+    sintomas: ''
+  })
 }
 </script>
 
@@ -37,7 +53,7 @@ const guardarPaciente = () => {
 
       <div class="md:w-1/2 md:pl-10 pl-0 md:h-screen overflow-y-scroll">
         <h3 class="font-black text-3xl text-center">Administra tus pacientes</h3>
-        
+           
         <div v-if="pacientes.length > 0">
           <p class="mt-5 mb-10 text-center text-lg font-bold">
                 Información de 
