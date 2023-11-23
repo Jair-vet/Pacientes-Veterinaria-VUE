@@ -1,5 +1,6 @@
 <script setup>
 import { ref, reactive } from "vue";
+import { uid } from 'uid'
 import Header from "./components/Header.vue"
 import Formulario from "./components/Formulario.vue"
 import Paciente from "./components/Paciente.vue"
@@ -7,6 +8,7 @@ import Paciente from "./components/Paciente.vue"
 const pacientes = ref([])
 
 const paciente = reactive({
+    id: null,
     nombre: '',
     propietario: '',
     email: '',
@@ -15,14 +17,10 @@ const paciente = reactive({
 })
 
 const guardarPaciente = () => {
-  pacientes.value.push({...paciente})
-
-  // Reiniciar el Objeto
-  // paciente.nombre = ''
-  // paciente.propietario = ''
-  // paciente.email = ''
-  // paciente.alta = ''
-  // paciente.sintomas = ''
+  pacientes.value.push({
+    ...paciente, // copia del paciente
+    id: uid()
+  })
 
   // Otra Forma de limpiar
   Object.assign(paciente, {
