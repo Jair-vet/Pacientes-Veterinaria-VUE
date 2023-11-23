@@ -19,7 +19,7 @@ const paciente = reactive({
 const guardarPaciente = () => {
   if(paciente.id){
     const { id } = paciente
-    const i = pacientes.value.findIndex((pacienteState) => pacienteState.id === id) // Retorna la posicion del elemento
+    const i = pacientes.value.findIndex(pacienteState => pacienteState.id === id) // Retorna la posicion del elemento
     pacientes.value[i] = {...paciente}
 
   } else{ 
@@ -43,6 +43,10 @@ const guardarPaciente = () => {
 const actualizarPaciente = (id) => {
   const pacienteEditar = pacientes.value.filter( paciente => paciente.id === id )[0]
   Object.assign(paciente, pacienteEditar)
+}
+
+const eliminarPaciente = (id) => {
+  pacientes.value = pacientes.value.filter( paciente => paciente.id !== id )
 }
 </script>
 
@@ -76,6 +80,7 @@ const actualizarPaciente = (id) => {
               :key="paciente.id"
               :paciente="paciente"
               @actualizar-paciente="actualizarPaciente"
+              @eliminar-paciente="eliminarPaciente"
           />
         </div>
 
