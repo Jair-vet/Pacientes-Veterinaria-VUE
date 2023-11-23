@@ -1,5 +1,5 @@
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, watch, onMounted } from "vue";
 import { uid } from 'uid'
 import Header from "./components/Header.vue"
 import Formulario from "./components/Formulario.vue"
@@ -14,6 +14,28 @@ const paciente = reactive({
     email: '',
     alta: '',
     sintomas: ''                 
+})
+
+watch(pacientes, () => {
+    guardarLocalStorage()
+  }, {
+    deep: true
+})
+
+
+const guardarLocalStorage = () => {
+    localStorage.setItem('pacientes', JSON.stringify(pacientes.value)) // Convertir a string y poderlo almacenar
+}
+
+
+// Asignar cuando el componente se monta por primera vez
+onMounted(() => {
+
+    const pacientesStorage = localStorage.getItem('pacientes')
+    if(pacientesStorage){
+      pacientes.value = JSON.parse(pacientesStorage) // Volvemos a convertir a un arreglo y lo agregamos
+
+    }
 })
 
 const guardarPaciente = () => {
