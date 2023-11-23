@@ -13,6 +13,22 @@ const props = defineProps({
     nombre: {
         type: String,
         required: true
+    },
+    propietario: {
+        type: String,
+        required: true
+    },
+    email: {
+        type: String,
+        required: true
+    },
+    alta: {
+        type: String,
+        required: true
+    },
+    sintomas: {
+        type: String,
+        required: true
     }
 })
 
@@ -57,6 +73,7 @@ const validar = () => {
                     placeholder="Nombre de la Mascota"
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500"
+                    :value="nombre"
                     @input="$emit('update:nombre', $event.target.value)"
                 />
             </div>
@@ -72,6 +89,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="propietario"
+                    :value="propietario"
                     @input="$emit('update:propietario', $event.target.value)"
                 />
             </div>
@@ -87,6 +105,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="email"
+                    :value="email"
                     @input="$emit('update:email', $event.target.value)"
                 />
             </div>
@@ -101,6 +120,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="alta"
+                    :value="alta"
                     @input="$emit('update:alta', $event.target.value)"
                 />
             </div>
@@ -115,6 +135,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="sintomas" 
+                    :value="sintomas"
                     @input="$emit('update:sintomas', $event.target.value)"
                 />
             </div>
