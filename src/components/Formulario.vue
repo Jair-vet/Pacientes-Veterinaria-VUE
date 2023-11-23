@@ -7,12 +7,13 @@ const alerta = reactive({
     mensaje: ''
 })
 
-const paciente = reactive({
-    nombre: '',
-    propietario: '',
-    email: '',
-    date: '',
-    sintomas: ''                 
+defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
+
+const props = defineProps({
+    nombre: {
+        type: String,
+        required: true
+    }
 })
 
 const validar = () => {
@@ -23,7 +24,7 @@ const validar = () => {
         return
     }
 }
-
+ 
 </script>
 
 
@@ -56,7 +57,7 @@ const validar = () => {
                     placeholder="Nombre de la Mascota"
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500"
-                    v-model="paciente.nombre"
+                    @input="$emit('update:nombre', $event.target.value)"
                 />
             </div>
             
@@ -71,7 +72,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="propietario"
-                    v-model="paciente.propietario"
+                    @input="$emit('update:propietario', $event.target.value)"
                 />
             </div>
             
@@ -86,7 +87,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="email"
-                    v-model="paciente.email"
+                    @input="$emit('update:email', $event.target.value)"
                 />
             </div>
             
@@ -100,7 +101,7 @@ const validar = () => {
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
                     name="alta"
-                    v-model="paciente.date"
+                    @input="$emit('update:alta', $event.target.value)"
                 />
             </div>
             
@@ -113,8 +114,8 @@ const validar = () => {
                     placeholder="Describe los Sintomas"
                     className="border w-full rounded-md p-2 mt-2 focus:outline-none focus:ring
                         focus:ring-sky-500 "
-                    name="sintomas"
-                    v-model="paciente.sintomas"
+                    name="sintomas" 
+                    @input="$emit('update:sintomas', $event.target.value)"
                 />
             </div>
 
