@@ -15,6 +15,7 @@ import Formulario from "./components/Formulario.vue"
 
     </div>
 
-  </div>
+  </div>  
 </template>
 
+  
