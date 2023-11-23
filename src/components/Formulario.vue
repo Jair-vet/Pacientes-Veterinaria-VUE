@@ -7,7 +7,9 @@ const alerta = reactive({
     mensaje: ''
 })
 
-defineEmits(['update:nombre', 'update:propietario', 'update:email', 'update:alta', 'update:sintomas'])
+const emit = defineEmits(['update:nombre', 
+'update:propietario', 'update:email', 'update:alta', 
+'update:sintomas', 'guardar-paciente'])
 
 const props = defineProps({
     nombre: {
@@ -34,11 +36,30 @@ const props = defineProps({
 
 const validar = () => {
 
-    if(Object.values(paciente).includes('')){
+    if(Object.values(props).includes('')){
         alerta.mensaje = 'Todos los Campos son Obligatorios'
         alerta.tipo = 'error'
+        
+        setTimeout(() => {
+            Object.assign(alerta, {
+                tipo: '',
+                mensaje: ''
+            })
+        }, 3000)  
         return
     }
+
+    emit('guardar-paciente')
+    alerta.mensaje = 'Paciente Almacenado Correctamente'
+    alerta.tipo = 'exito'
+
+    setTimeout(() => {
+        Object.assign(alerta, {
+            tipo: '',
+            mensaje: ''
+        })
+    }, 3000)   
+
 }
  
 </script>
@@ -54,8 +75,8 @@ const validar = () => {
  
         
         <form 
-        className="bg-gray-50 shadow-md rounded-lg py-10 px-5 md:m-0 m-4"
-        @submit.prevent="validar"
+            className="bg-gray-50 shadow-md rounded-lg py-10 px-5 md:m-0 m-4"
+            @submit.prevent="validar"
         >
         
             <Alerta 
